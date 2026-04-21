@@ -8,4 +8,4 @@ Directory `R/` has the R code to reproduce the Figures 1-4 illustrated in the pa
 
 ## Dependencies
 
-Data was generated using R version 4.5.3 and the anticlust package version 0.8.13.
+Data was generated using R version 4.5.3 and the anticlust package version 0.8.13. To generate Figure 1 and Figure 3, we also used [Gurobi](https://www.gurobi.com/) (version 13.01), which distributes an `R` package gurobi, which we used as backend solver of the ILP model (version 13.0-1).
