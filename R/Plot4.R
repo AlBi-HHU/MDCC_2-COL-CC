@@ -174,8 +174,7 @@ p <- ggplot(summary_results, aes(x = N, y = mean_mem, color = method)) +
     color = NA
   ) +
   labs(
-    title = "Peak Memory Usage for M = 2",
-    x = "Dataset Size N",
+    x = "N",
     y = "Peak Memory (MiB)",
     color = "Solver",
     fill = "Solver"
@@ -188,9 +187,13 @@ p <- ggplot(summary_results, aes(x = N, y = mean_mem, color = method)) +
   scale_fill_discrete(labels = c(
     SC2COL = "2-COL-CC",
     "2-COL-CC HEAP" = expression("2-COL-CC"["HEAP"])
-  ))
+  ))+
+  scale_x_continuous(breaks = N_values, labels = format(N_values, big.mark=",")) +
+  theme(axis.text.x = element_text(angle = 45)) +
+  theme(legend.title=element_blank())
 
 print(p)
+
 
 
 pdf("Plot4.pdf", width = 6, height = 4.5)
