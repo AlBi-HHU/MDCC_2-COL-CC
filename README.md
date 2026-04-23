@@ -1,4 +1,4 @@
-# BA
+# Cardinality-Constrained 2-Anticlustering
 
 This repository contains accompanying and data for the manuscript
 
