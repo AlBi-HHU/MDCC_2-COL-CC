@@ -94,6 +94,7 @@ p <- ggplot(summary_results, aes(x = N, y = mean_time, color = method)) +
     color = NA
   )+
   geom_line(linewidth = 1) +
+  geom_point(size = 1.5) +
   labs(
     x = "n",
     y = "Average Runtime (seconds)"

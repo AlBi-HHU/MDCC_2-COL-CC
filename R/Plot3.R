@@ -151,6 +151,7 @@ summary_results$method <- factor(
 
 p <- ggplot(summary_results, aes(x = N, y = mean_mem, color = method)) +
   geom_line(linewidth = 1) +
+  geom_point(size = 1.5) +
   geom_ribbon(
     aes(
       ymin = pmax(mean_mem - sd_mem, 0),
