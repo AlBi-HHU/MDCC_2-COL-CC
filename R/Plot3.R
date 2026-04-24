@@ -146,7 +146,7 @@ summary_results <- results %>%
 summary_results$method <- factor(
   summary_results$method,
   levels = c("2-COL-CC", "gurobi"),
-  labels = c("2-COL-CC", "Gurobi")
+  labels = c("2-COLCC", "Gurobi")
 )
 
 p <- ggplot(summary_results, aes(x = N, y = mean_mem, color = method)) +
@@ -161,7 +161,7 @@ p <- ggplot(summary_results, aes(x = N, y = mean_mem, color = method)) +
     color = NA
   ) +
   labs(
-    x = "N",
+    x = "n",
     y = "Peak Memory (MiB)",
     color = "Solver",
     fill = "Solver"
@@ -172,7 +172,9 @@ p <- ggplot(summary_results, aes(x = N, y = mean_mem, color = method)) +
   ) +
   scale_x_continuous(breaks = N_values, labels = format(N_values, big.mark=",")) +
   theme(axis.text.x = element_text(angle = 45)) +
-  theme(legend.title=element_blank())
+  theme(legend.title=element_blank())+
+  scale_color_manual(values = palette()[c(3:4)])+
+  scale_fill_manual(values=palette()[c(3:4)])
 
 print(p)
 

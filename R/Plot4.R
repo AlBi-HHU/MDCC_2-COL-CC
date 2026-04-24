@@ -157,7 +157,7 @@ summary_results <- results %>%
 summary_results$method <- factor(
   summary_results$method,
   levels = c("2-COL-CC", "2-COL-CC HEAP"),
-  labels = c("2-COL-CC", "2-COL-CC HEAP")
+  labels = c("2-COLCC", "2-COLCC HEAP")
 )
 
 
@@ -174,7 +174,7 @@ p <- ggplot(summary_results, aes(x = N, y = mean_mem, color = method)) +
     color = NA
   ) +
   labs(
-    x = "N",
+    x = "n",
     y = "Peak Memory (MiB)",
     color = "Solver",
     fill = "Solver"
@@ -182,15 +182,17 @@ p <- ggplot(summary_results, aes(x = N, y = mean_mem, color = method)) +
   theme_minimal(base_size = 12) +
   scale_color_discrete(labels = c(
     SC2COL = "2-COL-CC",
-    "2-COL-CC HEAP" = expression("2-COL-CC"["HEAP"])
+    "2-COLCC HEAP" = expression("2-COLCC"["HEAP"])
   )) +
   scale_fill_discrete(labels = c(
     SC2COL = "2-COL-CC",
-    "2-COL-CC HEAP" = expression("2-COL-CC"["HEAP"])
+    "2-COLCC HEAP" = expression("2-COLCC"["HEAP"])
   ))+
   scale_x_continuous(breaks = N_values, labels = format(N_values, big.mark=",")) +
   theme(axis.text.x = element_text(angle = 45)) +
-  theme(legend.title=element_blank())
+  theme(legend.title=element_blank())+
+  scale_color_manual(values = palette()[c(3,6)])+
+  scale_fill_manual(values=palette()[c(3,6)])
 
 print(p)
 
@@ -199,5 +201,3 @@ print(p)
 pdf("Plot4.pdf", width = 6, height = 4.5)
 p
 dev.off()
-
-
